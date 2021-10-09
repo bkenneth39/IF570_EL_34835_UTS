@@ -43,28 +43,33 @@ public class SumberSFXAdapter extends RecyclerView.Adapter<SumberSFXAdapter.Item
     }
 
     class ItemAudioViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private ImageView delete;
         private TextView judulsfx;
         private TextView genresfx;
         private SumberSFXAdapter sfxAdapter;
-        private ImageView Hapus;
-        private int position;
+
         private SumberSFX sumberSFX;
+        private int position;
 
         public ItemAudioViewHolder(View itemView, SumberSFXAdapter adapter) {
             super(itemView);
-            Hapus = (ImageView) itemView.findViewById(R.id.deleteBtn);
+            delete = (ImageView) itemView.findViewById(R.id.deleteBtn);
             sfxAdapter = adapter;
 
             judulsfx = (TextView) itemView.findViewById(R.id.judulfx);
             genresfx = (TextView) itemView.findViewById(R.id.genresfx);
             itemView.setOnClickListener(this);
 
-            Hapus.setOnClickListener(new View.OnClickListener() {
+
+
+            delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     sfxList.remove(getLayoutPosition());
                     notifyItemRemoved(getLayoutPosition());
                     notifyItemRangeChanged(getLayoutPosition(),sfxList.size());
+
                 }
             });
         }
